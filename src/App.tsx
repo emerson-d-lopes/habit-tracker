@@ -4,6 +4,7 @@ import { Today } from "./pages/Today";
 import { Habits } from "./pages/Habits";
 import { HabitDetail } from "./pages/HabitDetail";
 import { Overview } from "./pages/Overview";
+import { Log } from "./pages/Log";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<Today />} />
           <Route path="overview" element={<Overview />} />
+          <Route path="log" element={<Log />} />
           <Route path="habits" element={<Habits />} />
           <Route path="habits/:id" element={<HabitDetail />} />
         </Route>
