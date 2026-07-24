@@ -26,6 +26,14 @@ class HabitDB extends Dexie {
       habits: "id, createdAt, archivedAt, order",
       completions: "id, [habitId+date], date, habitId",
     });
+    // v2: shoal sync bookkeeping (outbox, per-record HLC, cursor).
+    this.version(2).stores({
+      habits: "id, createdAt, archivedAt, order",
+      completions: "id, [habitId+date], date, habitId",
+      _shoal_outbox: "opId, createdAt",
+      _shoal_meta: "recordId",
+      _shoal_kv: "key",
+    });
   }
 }
 

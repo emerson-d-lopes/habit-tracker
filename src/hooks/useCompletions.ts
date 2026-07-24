@@ -1,6 +1,7 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { db, type Completion } from "../db";
 import { toDateStr } from "../lib/utils";
+import { recordCompletion, recordCompletionDeleted } from "../sync";
 
 export function useCompletionsForHabit(habitId: string) {
   return (
@@ -24,16 +25,20 @@ export async function setCompletion(
   if (existing) {
     if (existing.status === status) {
       await db.completions.delete(existing.id);
+      await recordCompletionDeleted(existing.id);
     } else {
       await db.completions.update(existing.id, { status });
+      await recordCompletion({ ...existing, status });
     }
   } else {
-    await db.completions.add({
+    const completion = {
       id: crypto.randomUUID(),
       habitId,
       date,
       status,
       createdAt: Date.now(),
-    });
+    };
+    await db.completions.add(completion);
+    await recordCompletion(completion);
   }
 }

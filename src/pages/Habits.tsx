@@ -11,6 +11,7 @@ import {
   deleteHabit,
 } from "../hooks/useHabits";
 import { seedSampleData } from "../lib/seed";
+import { SyncSettings } from "../components/SyncSettings";
 
 export function Habits() {
   const [showForm, setShowForm] = useState(false);
@@ -150,6 +151,8 @@ export function Habits() {
           )}
         </div>
       )}
+
+      <SyncSettings />
     </div>
   );
 }
