@@ -59,6 +59,13 @@ Theme is applied by a blocking inline script in `index.html` before first paint.
 `localStorage` from React instead would render one frame in the wrong theme, visible as a flash
 on every load.
 
+## Related
+
+[mnemonic](https://github.com/emerson-d-lopes/mnemonic) applies the same local-first pattern to
+spaced-repetition flashcards. Both are styled with
+[ash-lumen](https://github.com/emerson-d-lopes/ash-lumen).
+
 ## License
 
 MIT
+
