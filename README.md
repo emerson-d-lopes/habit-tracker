@@ -11,6 +11,15 @@ There is no server. That decides everything else: state lives in one local datab
 is derived from it at read time, and there is no sync conflict to resolve because there is
 nothing to sync with. Data never leaves the browser.
 
+## Architecture
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/architecture-dark.svg">
+  <img alt="architecture: where do streaks and heatmaps come from if nothing stores them?" src="docs/architecture-light.svg">
+</picture>
+
+*where do streaks and heatmaps come from if nothing stores them?* a missing day breaks the streak, except today: calcStreak skips an unmarked today and counts from yesterday, so streaks do not read zero every morning. skipped completions are a gap, never a break and never an extension.
+
 ## Features
 
 - Daily check-in with done and skip toggles
